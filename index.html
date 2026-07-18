@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relax Sport | Bouhsina</title>
+    <meta
+      name="description"
+      content="Portfolio moderne de Relax Sport Bouhsina avec expérience, certifications et contact."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #07111f;
+        --panel: rgba(255, 255, 255, 0.08);
+        --panel-strong: rgba(255, 255, 255, 0.14);
+        --text: #f5f7fb;
+        --muted: #c5d1e5;
+        --accent: #56d4c6;
+        --accent-2: #7a7cf6;
+        --border: rgba(255, 255, 255, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #07111f 0%, #0f243f 100%);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(12px);
+        background: rgba(7, 17, 31, 0.78);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+      }
+
+      .brand {
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: 0.04em;
+      }
+
+      .brand span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 5rem 0 4rem;
+        position: relative;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        width: 320px;
+        height: 320px;
+        background: var(--accent);
+        top: -50px;
+        right: -80px;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hero::after {
+        width: 240px;
+        height: 240px;
+        background: var(--accent-2);
+        bottom: 20px;
+        left: -100px;
+        animation: float 7s ease-in-out infinite reverse;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .hero-copy p {
+        color: var(--muted);
+        font-size: 1.04rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 1.25rem;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #05101c;
+        box-shadow: 0 10px 30px rgba(86, 212, 198, 0.25);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .hero-card {
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 1.15rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        animation: rise 1s ease both;
+      }
+
+      .hero-card img {
+        border-radius: 18px;
+        height: 420px;
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-head h2 {
+        font-size: 1.65rem;
+      }
+
+      .section-head p {
+        color: var(--muted);
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1.3rem;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .carousel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: #0d1d31;
+      }
+
+      .slides {
+        position: relative;
+        min-height: 360px;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.7s ease;
+      }
+
+      .slide.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide img {
+        height: 100%;
+      }
+
+      .slide-caption {
+        position: absolute;
+        inset: auto 1rem 1rem 1rem;
+        padding: 1rem 1.1rem;
+        border-radius: 16px;
+        background: rgba(7, 17, 31, 0.72);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .slide-caption h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .slide-caption p {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .carousel-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.9rem 1rem 1rem;
+      }
+
+      .dots {
+        display: flex;
+        gap: 0.4rem;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background: var(--accent);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem;
+        align-items: center;
+      }
+
+      .about-media img {
+        height: 320px;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+      }
+
+      .about-text ul {
+        margin-top: 1rem;
+        color: var(--muted);
+        list-style: none;
+      }
+
+      .about-text li {
+        padding: 0.4rem 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .timeline-item {
+        padding: 1rem 1.1rem;
+        border-left: 3px solid var(--accent);
+        border-radius: 0 16px 16px 0;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .timeline-item strong {
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 0.7rem;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        background: rgba(86, 212, 198, 0.15);
+        color: var(--accent);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 1rem;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 0.8rem;
+        color: var(--muted);
+      }
+
+      form {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        padding: 0.9rem 1rem;
+        border-radius: 14px;
+        outline: none;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #9fb0c8;
+      }
+
+      .footer {
+        padding: 2rem 0 2.5rem;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-16px);
+        }
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .about-grid,
+        .contact-grid,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-card img {
+          height: 300px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 3.2rem;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: start;
+          gap: 0.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="#home" class="brand">Relax<span>Sport</span> Bouhsina</a>
+        <nav class="nav-links">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#certificates">Certificat</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero container">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <h1>Votre énergie, votre bien-être, votre mouvement.</h1>
+            <p>
+              Je crée des expériences sportives modernes, inspirantes et personnalisées pour aider chaque
+              personne à retrouver confiance, équilibre et performance.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+              <a href="#about" class="btn btn-secondary">Découvrir mon parcours</a>
+            </div>
+          </div>
+          <div class="hero-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"
+              alt="Coach sportif en plein entraînement"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="container reveal" id="about">
+        <div class="section-head">
+          <h2>À propos</h2>
+          <p>Un parcours orienté performance, bien-être et transmission.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-media">
+            <img
+              src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=900&q=80"
+              alt="Portrait professionnel et dynamique"
+            />
+          </div>
+          <div class="about-text card">
+            <p>
+              Je suis Bouhsina, passionnée par l’accompagnement sportif et le développement d’un mode de vie
+              actif, serein et durable. Mon approche combine méthode, écoute et motivation pour créer des
+              expériences uniques et concrètes.
+            </p>
+            <ul>
+              <li>✔️ Coaching basé sur les objectifs réels de chaque personne</li>
+              <li>✔️ Programmes adaptés à tous les niveaux</li>
+              <li>✔️ Sens du détail, énergie positive et accompagnement professionnel</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="container reveal" id="experience">
+        <div class="section-head">
+          <h2>Expérience</h2>
+          <p>Des activités variées et un engagement durable dans le sport et le bien-être.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Coach sportif & accompagnement personnel</strong>
+            <span>2019 — Présent</span>
+            <p>Organisation de séances, suivi personnalisé et développement de programmes inspirants.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>Événements et ateliers bien-être</strong>
+            <span>2021 — Présent</span>
+            <p>Création d’ateliers de mobilité, de remise en forme et de cohésion autour du mouvement.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>Communication et image professionnelle</strong>
+            <span>2022 — Présent</span>
+            <p>Développement d’une présence digitale moderne, dynamique et cohérente avec la vision du projet.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container reveal" id="certificates">
+        <div class="section-head">
+          <h2>Certificats</h2>
+          <p>Des formations et reconnaissances solides pour un accompagnement de qualité.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <span class="badge">Formation</span>
+            <h3>Coach Sportif</h3>
+            <p>Programme complet orienté entraînement, posture et accompagnement personnalisé.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Certification</span>
+            <h3>Bien-être & récupération</h3>
+            <p>Compétences en mobilité, confort du corps et méthodes de récupération efficaces.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Expertise</span>
+            <h3>Communication digitale</h3>
+            <p>Maîtrise de l’image de marque, du contenu et de la visibilité professionnelle.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container reveal">
+        <div class="section-head">
+          <h2>Galerie et slider</h2>
+          <p>Un carrousel vivant avec des images réelles et un rendu moderne.</p>
+        </div>
+        <div class="carousel" aria-label="Galerie d’images sportives">
+          <div class="slides">
+            <div class="slide active">
+              <img
+                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80"
+                alt="Séance sportive dynamique"
+              />
+              <div class="slide-caption">
+                <h3>Entraînement dynamique</h3>
+                <p>Des séances modernes pensées pour l’énergie et la progression.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80"
+                alt="Session de fitness"
+              />
+              <div class="slide-caption">
+                <h3>Fitness & motivation</h3>
+                <p>Un accompagnement sur mesure pour chaque objectif.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+                alt="Bien-être et relaxation"
+              />
+              <div class="slide-caption">
+                <h3>Équilibre & bien-être</h3>
+                <p>Un mélange de mouvement, de souffle et de sérénité.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-nav">
+            <div class="dots" aria-label="Navigation du carrousel">
+              <button class="dot active" data-index="0" aria-label="Afficher la slide 1"></button>
+              <button class="dot" data-index="1" aria-label="Afficher la slide 2"></button>
+              <button class="dot" data-index="2" aria-label="Afficher la slide 3"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container reveal" id="contact">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>Discutons de votre projet, de votre objectif ou de votre envie de bien-être.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="card contact-list">
+            <p><strong>Email :</strong> contact@relaxsport-bouhsina.com</p>
+            <p><strong>Téléphone :</strong> +212 6 12 34 56 78</p>
+            <p><strong>Adresse :</strong> Casablanca, Maroc</p>
+            <p><strong>Disponibilité :</strong> Sur rendez-vous et en ligne</p>
+          </div>
+          <div class="card">
+            <form>
+              <input type="text" placeholder="Votre nom" />
+              <input type="email" placeholder="Votre email" />
+              <textarea rows="5" placeholder="Votre message..."></textarea>
+              <button class="btn btn-primary" type="button">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-row">
+        <p>© 2026 Relax Sport Bouhsina. Tous droits réservés.</p>
+        <p>Design moderne • Sport • Bien-être • Inspiration</p>
+      </div>
+    </footer>
+
+    <script>
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const dots = Array.from(document.querySelectorAll('.dot'));
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        currentSlide = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => showSlide(Number(dot.dataset.index)));
+      });
+
+      setInterval(() => showSlide(currentSlide + 1), 5000);
+
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      reveals.forEach((item) => observer.observe(item));
+    </script>
+  </body>
+</html>
